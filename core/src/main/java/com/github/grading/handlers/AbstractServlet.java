@@ -28,6 +28,7 @@ public class AbstractServlet extends HttpServlet {
                 resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
                 return;
             }
+            System.out.println("IN SERVICE");
             setDefaultHeaders(resp);
             super.service(req, resp);
         } catch (BadRequest e) {
@@ -40,13 +41,16 @@ public class AbstractServlet extends HttpServlet {
     @Override
     public void doOptions(HttpServletRequest req, HttpServletResponse resp) {
         System.out.println("DO OPTIONS");
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "*");
+        resp.setHeader("Access-Control-Allow-Headers", "*");
         resp.setStatus(204);
     }
 
     protected void setDefaultHeaders(HttpServletResponse resp) {
-        resp.setHeader("Access-Control-Allow-Origin", "*");
-        resp.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
-        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//        resp.setHeader("Access-Control-Allow-Origin", "*");
+//        resp.setHeader("Access-Control-Allow-Methods", "*");
+//        resp.setHeader("Access-Control-Allow-Headers", "*");
         resp.setContentType("application/json");
         resp.setStatus(HttpServletResponse.SC_ACCEPTED);
     }

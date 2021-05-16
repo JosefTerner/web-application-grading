@@ -20,17 +20,22 @@ public abstract class AbstractRepository <T, K extends Serializable> implements 
     @Override
     public T save(T entity) {
         getSession().save(entity);
+        getSession().close();
         return entity;
     }
 
     @Override
     public T getOne(K id) {
-        return getSession().getReference(getDomainClass(), id);
+        T obj = getSession().getReference(getDomainClass(), id);
+        getSession().close();
+        return obj;
     }
 
     @Override
     public T findOne(K id) {
-        return getSession().find(getDomainClass(), id);
+        T obj = getSession().find(getDomainClass(), id);
+        getSession().close();
+        return obj;
     }
 
     @Override
@@ -39,6 +44,7 @@ public abstract class AbstractRepository <T, K extends Serializable> implements 
         CriteriaQuery<T> criteriaQuery = builder.createQuery(getDomainClass());
         criteriaQuery.from(getDomainClass());
         TypedQuery<T> query = getSession().createQuery(criteriaQuery);
+        getSession().close();
         return query.getResultList();
     }
 
@@ -67,7 +73,9 @@ public abstract class AbstractRepository <T, K extends Serializable> implements 
 
     @Override
     public long count() {
-        return (long) getSession().createQuery("Select count(*) from " + getDomainClassName()).getSingleResult();
+        long result = (long) getSession().createQuery("Select count(*) from " + getDomainClassName()).getSingleResult();
+        getSession().close();
+        return result;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.github.grading.controller.impl;
+package com.github.grading.utils.impl;
 
 import com.github.grading.controller.IAdminGameController;
 import com.github.grading.controller.IGameController;

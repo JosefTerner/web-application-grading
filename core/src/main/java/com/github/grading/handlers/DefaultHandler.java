@@ -75,6 +75,14 @@ public class DefaultHandler extends AbstractServlet {
     }
 
     @Override
+    public void doOptions(HttpServletRequest req, HttpServletResponse resp) {
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "*");
+        resp.setHeader("Access-Control-Allow-Headers", "*");
+        resp.setStatus(200);
+    }
+
+    @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
         String[] splitUrl = url.split("/");
@@ -98,7 +106,9 @@ public class DefaultHandler extends AbstractServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("DO POST");
-
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "*");
+        resp.setHeader("Access-Control-Allow-Headers", "*");
         String url = req.getRequestURI();
 
         if (url.endsWith("/auth")) {
