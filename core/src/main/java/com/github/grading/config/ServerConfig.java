@@ -32,20 +32,11 @@ public class ServerConfig {
         Context ctx = tomcat.addWebapp("/", new File(".").getAbsolutePath());
         ctx.addApplicationListener(WsContextListener.class.getName());
 
-        tomcat.addServlet(ctx, "UsersHandler", HandlerConfig.getUsersHandler());
-        ctx.addServletMappingDecoded("/*", "UsersHandler");
+        tomcat.addServlet(ctx, "AdminHandler", HandlerConfig.getAdminHandler());
+        ctx.addServletMappingDecoded("/admin/*", "AdminHandler");
 
-        tomcat.addServlet(ctx, "TournamentHandler", HandlerConfig.getTournamentHandler());
-        ctx.addServletMappingDecoded("/tournament/*", "TournamentHandler");
-
-        tomcat.addServlet(ctx, "GameHandler", HandlerConfig.getGameHandler());
-        ctx.addServletMappingDecoded("/game/*", "GameHandler");
-
-        tomcat.addServlet(ctx, "AdminGameHandler", HandlerConfig.getAdminGameHandler());
-        ctx.addServletMappingDecoded("/admin/tournament/*/game/*", "AdminGameHandler");
-
-        tomcat.addServlet(ctx, "AdminTournamentHandler", HandlerConfig.getAdminTournamentHandler());
-        ctx.addServletMappingDecoded("/admin/tournament/*", "AdminTournamentHandler");
+        tomcat.addServlet(ctx, "DefaultHandler", HandlerConfig.getDefaultHandler());
+        ctx.addServletMappingDecoded("/*", "DefaultHandler");
 
         return new ServerRunner(tomcat, ctx, List.of(chatWebsocketHandler));
     }

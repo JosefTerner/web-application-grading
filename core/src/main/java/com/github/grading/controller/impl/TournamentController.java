@@ -21,6 +21,6 @@ public class TournamentController implements ITournamentController {
 
     @Override
     public Tournament get(long id) {
-        return null;
+        return tournamentService.get(id);
     }
 }

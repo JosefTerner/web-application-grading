@@ -1,6 +1,6 @@
 package com.github.grading.config;
 
-import com.github.grading.handlers.UsersHandler;
+import com.github.grading.handlers.DefaultHandler;
 import com.github.grading.handlers.WebsocketHandler;
 import com.github.grading.network.Broker;
 import com.github.grading.network.WebsocketConnectionPool;
@@ -10,8 +10,6 @@ public class AppConfig {
     private static Broker broker = new Broker();
 
     private static WebsocketConnectionPool websocketConnectionPool = new WebsocketConnectionPool();
-
-    private static UsersHandler usersHandler = new UsersHandler(ControllerConfig.getUserController());
 
     private static WebsocketHandler websocketHandler = new WebsocketHandler(getWebsocketConnectionPool(), getBroker());
 

@@ -7,10 +7,13 @@ public class ControllerConfig {
 
     private static final IAdminGameController adminGameController = new AdminGameController();
     private static final IAdminTournamentController adminTournamentController = new AdminTournamentController();
-    private static final IGameController gameController = new GameController();
+    private static final IGameController gameController = new GameController(ServiceConfig.getGameService());
     private static final ITournamentController tournamentController = new TournamentController(ServiceConfig.getTournamentService());
     private static final IUserController userController = new UserController(RepositoryConfig.getUserRepository());
 
+    private static final ITournamentInviteController tournamentInviteController = new TournamentInviteController(ServiceConfig.getTournamentInviteService());
+
+    private static final IAdminTournamentInviteController adminTournamentInviteController = new AdminTournamentInviteController(ServiceConfig.getTournamentInviteService());
     public static IAdminGameController getAdminGameController() {
         return adminGameController;
     }
@@ -29,5 +32,13 @@ public class ControllerConfig {
 
     public static IUserController getUserController() {
         return userController;
+    }
+
+    public static ITournamentInviteController getTournamentInviteController() {
+        return tournamentInviteController;
+    }
+
+    public static IAdminTournamentInviteController getAdminTournamentInviteController() {
+        return adminTournamentInviteController;
     }
 }

@@ -1,6 +1,6 @@
 package com.github.grading.handlers;
 
-import com.github.grading.controller.ITournamentController;
+import com.github.grading.controller.IAdminTournamentController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/tournament")
-public class TournamentHandler extends AbstractServlet {
+@WebServlet("/admin/*")
+public class AdminHandler extends AbstractServlet {
 
-    private final ITournamentController controller;
+    private final IAdminTournamentController controller;
 
-    public TournamentHandler(ITournamentController controller) {
+    public AdminHandler(IAdminTournamentController controller) {
         this.controller = controller;
     }
 

@@ -8,5 +8,7 @@ public interface IGameController {
 
     List<Game> getAll();
 
+    List<Game> getAll(long tournamentId);
+
     Game get(long id);
 }

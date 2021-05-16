@@ -7,4 +7,6 @@ import java.util.List;
 public interface ITournamentService {
 
     List<Tournament> getAll();
+
+    Tournament get(long id);
 }

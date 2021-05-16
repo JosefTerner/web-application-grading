@@ -18,4 +18,9 @@ public class TournamentService implements ITournamentService {
     public List<Tournament> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public Tournament get(long id) {
+        return repository.findOne(id);
+    }
 }

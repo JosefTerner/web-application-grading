@@ -37,11 +37,11 @@ public class Game {
     private Tournament tournament;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "player_one_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "player_one_id", referencedColumnName = "id")
     private Player playerOne;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "player_two_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "player_two_id", referencedColumnName = "id")
     private Player playerTwo;
 
     @Column(name = "player_one_score")
@@ -53,5 +53,6 @@ public class Game {
     @Column(name = "finished_games")
     private int finishedGames;
 
+    @Column(name = "is_finished")
     private boolean isFinished;
 }
