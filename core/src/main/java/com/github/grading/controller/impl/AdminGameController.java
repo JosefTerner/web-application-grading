@@ -1,11 +1,9 @@
-package com.github.grading.utils.impl;
+package com.github.grading.controller.impl;
 
 import com.github.grading.controller.IAdminGameController;
-import com.github.grading.controller.IGameController;
 import com.github.grading.dto.CreateGameDto;
 import com.github.grading.dto.UpdateGameDto;
 import com.github.grading.entity.Game;
-import com.github.grading.repository.IUserRepository;
 
 import java.util.List;
 

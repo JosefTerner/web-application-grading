@@ -1,4 +1,4 @@
-package com.github.grading.utils.impl;
+package com.github.grading.controller.impl;
 
 import com.github.grading.controller.IAdminTournamentInviteController;
 import com.github.grading.dto.CreateTournamentInviteDto;
