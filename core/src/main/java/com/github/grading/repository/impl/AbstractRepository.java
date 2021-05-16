@@ -1,6 +1,8 @@
 package com.github.grading.repository.impl;
 
 import com.github.grading.repository.Repository;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -41,9 +43,11 @@ public abstract class AbstractRepository <T, K extends Serializable> implements 
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public T update(T entity) {
-        return (T) getSession().merge(entity);
+    public void update(T entity) {
+        Session session = getSession();
+        Transaction txn = session.beginTransaction();
+        session.merge(entity);
+        txn.commit();
     }
 
     @Override

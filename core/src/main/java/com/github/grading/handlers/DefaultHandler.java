@@ -5,8 +5,7 @@ import com.github.grading.controller.IGameController;
 import com.github.grading.controller.ITournamentController;
 import com.github.grading.controller.ITournamentInviteController;
 import com.github.grading.controller.IUserController;
-import com.github.grading.dto.UserAuthorizationDto;
-import com.github.grading.dto.UserRegistrationDto;
+import com.github.grading.dto.*;
 import com.github.grading.exceptions.BadRequest;
 import com.github.grading.payload.ResponseEnvelope;
 
@@ -71,6 +70,27 @@ public class DefaultHandler extends AbstractServlet {
                 sendResponse(resp, tournamentController.get(tournamentId));
             } else {
                 sendResponse(resp, tournamentController.getAll());
+            }
+        }
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String url = req.getRequestURI();
+        String[] splitUrl = url.split("/");
+
+        // PUT 	/user/{user_id}/password
+        // PUT 	/user/{user_id}/login
+
+        if (splitUrl[1].equals("user")) {
+            if (splitUrl.length == 4 && splitUrl[3].equals("password")) {
+                long userId = Long.parseLong(splitUrl[2]);
+                UserChangePasswordDto changePasswordDto = parseRequestBody(req, UserChangePasswordDto.class);
+                userControllers.changePassword(userId, changePasswordDto);
+            } else if (splitUrl.length == 4 && splitUrl[3].equals("login")) {
+                long userId = Long.parseLong(splitUrl[2]);
+                UserChangeLoginDto changeLoginDto = parseRequestBody(req, UserChangeLoginDto.class);
+                userControllers.changeLogin(userId, changeLoginDto);
             }
         }
     }

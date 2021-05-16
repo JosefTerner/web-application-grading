@@ -13,7 +13,7 @@ public interface Repository<T, K extends Serializable> {
 
     List<T> findAll();
 
-    T update(T entity);
+    void update(T entity);
 
     void delete(T entity);
 

@@ -1,6 +1,8 @@
 package com.github.grading.controller;
 
 import com.github.grading.dto.UserAuthorizationDto;
+import com.github.grading.dto.UserChangeLoginDto;
+import com.github.grading.dto.UserChangePasswordDto;
 import com.github.grading.dto.UserRegistrationDto;
 import com.github.grading.entity.TournamentInvite;
 import com.github.grading.entity.User;
@@ -19,4 +21,8 @@ public interface IUserController {
     List<User> getAll();
 
     User get(long userId);
+
+    void changeLogin(long userId, UserChangeLoginDto userChangeLoginDto);
+
+    void changePassword(long userId, UserChangePasswordDto userChangePasswordDto);
 }
