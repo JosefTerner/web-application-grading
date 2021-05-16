@@ -53,6 +53,6 @@ public class Game {
     @Column(name = "finished_games")
     private int finishedGames;
 
-    @Column(name = "is_finished")
+    @Column(name = "isFinished")
     private boolean isFinished;
 }

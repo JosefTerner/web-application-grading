@@ -70,17 +70,4 @@ public class TokenProvider {
         return newT;
     }
 
-    public static boolean checkToken(String str) {
-        Token token = decode(str);
-        if(token == null){
-            log.info("Token is null!");
-            return false;
-        }
-        if (token.getExpire_in() < new Date().getTime()){
-            log.info("Token expired!");
-            return false;
-        } else {
-            return true;
-        }
-    }
 }

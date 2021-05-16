@@ -12,7 +12,7 @@ public interface IAdminTournamentController {
 
     Tournament get(long id);
 
-    long create(CreateTournamentDto tournament);
+    void create(CreateTournamentDto tournament);
 
     void update(long id, UpdateTournamentDto tournament);
 
